@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<title>ANDREW'S VINYLS</title>
+    <link rel="icon" type="image/gif" href="spinningVinyl.gif">
+    <style>
+        @font-face {
+            font-family: "Bubble";
+            src: url("bubbleFont.otf") format("truetype");
+        }
+        html {
+            background-color: rgb(255,239,226,255);
+            font-size: larger;
+            font-family: "Bubble", sans-serif;
+            text-align: center;
+        }
+        h1 {
+            text-align: center;
+            color: #f8f4f4;
+            text-shadow: 
+                -5px 0px 0 #2c2b2b,
+                -5px 1px 0 #2c2b2b,
+                -5px 2px 0 #2c2b2b,
+                -5px -1px 0 #2c2b2b,
+                1px 0px 0 #2c2b2b;
+        }
+        #order {
+            text-align: left;
+            display: block;
+            margin: 0 auto;
+            border: 7px solid #2c2b2b;
+            border-radius: 75px;
+            height: 500px;
+            width: 750px;
+            overflow-y: scroll;
+        }
+        #order::-webkit-scrollbar {
+            width: 12px;
+        }
+        #order::-webkit-scrollbar-thumb {
+            background-color: rgb(80,165,59); 
+            border: 4px solid #2c2b2b;
+            border-radius: 200px; 
+        }
+        #order::-webkit-scrollbar-track {
+            background-color: rgb(242,83,54);
+            border-radius: 20px;
+            border: 4px solid #2c2b2b;
+            margin: 60px;
+        }
+        .titleImage {
+            width: 100%;
+        }
+        .albumCover {
+            width: 150px;
+            margin-right: 50px;
+            border-radius: 10px;
+            border: 2px solid #2c2b2b;
+            filter: drop-shadow(-2px 2px 0px #2c2b2b);
+        }
+        .orderAlbum {
+            background-color: rgb(178,123,190);
+            box-shadow: -2px 2px 0px #2c2b2b;
+            color: #f8f4f4;
+            border-radius: 50px;
+            padding: 20px;
+            margin: 40px;
+            text-shadow: 
+                -2px -1px 0 #2c2b2b,
+                -2px 0px 0 #2c2b2b,
+                -2px 2px 0 #2c2b2b;
+            border: 2px solid #2c2b2b;
+        }
+        #albumMain {
+            display: flex;
+            align-items: center;
+        }
+        input[type="text"] {
+            border: 2px solid #2c2b2b;
+            border-radius: 15px;
+            padding: 5px; 
+            box-shadow: -1px 1px 0px #2c2b2b;
+        }
+        input[type="submit"] {
+            margin-left: 60px;
+            cursor: pointer;
+        }
+        #name {
+            margin-left: 75px;
+            width: 450px;
+        }
+        #email {
+            width: 450px;
+        }
+        #address {
+            margin-left: 52px;
+            width: 450px;
+        }
+        #submit {
+            font-family: "Bubble", sans-serif;
+            color: rgb(80,165,59);
+            text-shadow: 
+                -2px -1px 0 #2c2b2b,
+                -2px 0px 0 #2c2b2b,
+                -2px 2px 0 #2c2b2b;
+            background-color: rgb(242,83,54);
+            border: 2px solid #2c2b2b;
+            padding: 10px;
+            border-radius: 25px;
+            box-shadow: -2px 2px 0px #2c2b2b;
+            font-size: large;
+        }
+        #thanks {
+            color: rgb(255, 172, 157);
+            text-shadow: 
+                -5px -1px 0 #2c2b2b,
+                -5px 0px 0 #2c2b2b,
+                1px 0px 0 #2c2b2b,
+                -2px -1px 0 #2c2b2b,
+                -5px 2px 0 #2c2b2b;
+            text-align: center;
+            font-size: 55px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1><em>Order Confirmation</em></h1>
+    <br>
+    <div id="order">
+        <br><br><br>
+        <div id="thanks">
+            Thank You for your order!
+        </div>
+        <div class="orderAlbum" id="albumMain">
+                <%- image %>
+                <%- album %> - <%- artist %>
+            <br> 
+        </div>
+        <div class="orderAlbum">
+            <br>
+            Name: <%- name %>
+            <br><br>
+            Email: <%- email %>
+            <br><br>
+            Address: <%- address %>
+            <br><br>
+
+        </div>
+    </div>
+    <br><br>
+    <img src="titleImage.jpeg" alt="Title Image" class="titleImage">
+    <script>
+
+    </script>
+</body>
+
+</html>

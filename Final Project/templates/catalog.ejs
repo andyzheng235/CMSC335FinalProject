@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<title>ANDREW'S VINYLS</title>
+    <link rel="icon" type="image/gif" href="spinningVinyl.gif">
+    <style>
+        @font-face {
+            font-family: "Bubble";
+            src: url("bubbleFont.otf") format("truetype");
+        }
+        html {
+            background-color: rgb(255,239,226,255);
+            font-size: larger;
+            font-family: "Bubble", sans-serif;
+            text-align: center;
+        }
+        h1 {
+            text-align: center;
+            color: #f8f4f4;
+            text-shadow: 
+                -5px 0px 0 #2c2b2b,
+                -5px 1px 0 #2c2b2b,
+                -5px 2px 0 #2c2b2b,
+                -5px -1px 0 #2c2b2b,
+                1px 0px 0 #2c2b2b;
+        }
+        #catalog {
+            text-align: center;
+            display: block;
+            margin: 0 auto;
+            border: 7px solid #2c2b2b;
+            border-radius: 75px;
+            height: 500px;
+            width: 750px;
+            overflow-y: scroll;
+        }
+        #catalog::-webkit-scrollbar {
+            width: 12px;
+        }
+        #catalog::-webkit-scrollbar-thumb {
+            background-color: rgb(80,165,59); 
+            border: 4px solid #2c2b2b;
+            border-radius: 200px; 
+        }
+        #catalog::-webkit-scrollbar-track {
+            background-color: rgb(242,83,54);
+            border-radius: 20px;
+            border: 4px solid #2c2b2b;
+            margin: 60px;
+        }
+        .titleImage {
+            width: 100%;
+        }
+        .albumCover {
+            width: 150px;
+            margin-right: 50px;
+            border-radius: 10px;
+            border: 2px solid #2c2b2b;
+            filter: drop-shadow(-2px 2px 0px #2c2b2b);
+        }
+        .albums {
+            background-color: rgb(178,123,190);
+            box-shadow: -2px 2px 0px #2c2b2b;
+            display: flex;
+            align-items: center;
+            color: #f8f4f4;
+            border-radius: 50px;
+            padding: 20px;
+            margin: 40px;
+            text-shadow: 
+                -2px -1px 0 #2c2b2b,
+                -2px 0px 0 #2c2b2b,
+                -2px 2px 0 #2c2b2b;
+            border: 2px solid #2c2b2b;
+        }
+        .albums:hover {
+            cursor: pointer;
+        }
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1><em>Vinyl Catalog</em></h1>
+    <br>
+    <div id="catalog">
+
+    </div>
+    <br><br>
+    <img src="titleImage.jpeg" alt="Title Image" class="titleImage">
+    <script>
+        fetch("albums.json")
+            .then(response => response.json())
+            .then(data => {
+                const catalog = document.getElementById('catalog');
+                data.forEach(item => {
+                    const album = document.createElement('a');
+                    album.href = `/checkout?product=${item.id}`;
+                    album.innerHTML = 
+                        `<div class="albums"><img src="${item.image}" alt="${item.albumName}" class="albumCover">
+                        ${item.albumName} - ${item.artist}</div>`;
+                    catalog.appendChild(album);
+                });
+            })
+            .catch(error => console.error('Error loading catalog:', error));
+    </script>
+</body>
+
+</html>

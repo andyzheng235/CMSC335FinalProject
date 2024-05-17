@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+    <link rel="icon" type="image/gif" href="spinningVinyl.gif">
+	<title>ANDREW'S VINYLS</title>
+    <style>
+        @font-face {
+            font-family: "Bubble";
+            src: url("bubbleFont.otf") format("truetype");
+        }
+        html {
+            background-color: rgb(255,239,226,255);
+            font-size: larger;
+            font-family: "Bubble", sans-serif;
+            text-align: center;
+        }
+        h1 {
+            color: #f8f4f4;
+            text-shadow: 
+                -5px 0px 0 #2c2b2b,
+                -5px 1px 0 #2c2b2b,
+                -5px 2px 0 #2c2b2b,
+                -5px -1px 0 #2c2b2b,
+                1px 0px 0 #2c2b2b;
+        }
+        button {
+            font-size: large;
+            font-family: "Bubble", sans-serif;
+            border-radius: 1.25em;
+            border: 3px solid black;
+            padding: 0.5em;
+            background-color: black;
+            color: white;
+            transition: color 0.2s;
+        }
+        #vinylButton:hover {
+            color: rgb(255,181,56); 
+        }
+        #kanyeAPI:hover {
+            color: rgb(242,83,54);
+        }
+        #checkOrder:hover {
+            color: rgb(178,123,190)
+        }
+        .spinningVinyl {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+        }
+        .titleImage {
+            width: 100%;
+        }
+        #quote {
+            font-family: 'Courier New', Courier, monospace;
+            height: 3em;
+        }
+    </style>
+</head>
+
+<body>
+    <br><br>
+    <h1><em>Welcome to Andrew's Vinyl Store</em></h1>
+    <br><br><br><br>
+    <a href="/catalog"><button id="vinylButton">CHECK OUT THESE VINYLS</button></a>
+    <br><br>
+    <button id="kanyeAPI">GENERATE A RANDOM KANYE QUOTE</button>
+    <br><br><br>
+    <div id="quote">You know you want to click it :D</div>
+    <br>
+    <img src="titleImage.jpeg" alt="Title Image" class="titleImage">
+    <script>
+        document.getElementById("kanyeAPI").addEventListener('click', function() {
+            fetch('https://api.kanye.rest/')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('quote').innerHTML = `<em>"${data.quote}"</em>`;
+                })
+                .catch(error => {
+                    console.error('Error fetching Kanye quote:', error);
+                });
+        });
+    </script>
+</body>
+
+</html>
